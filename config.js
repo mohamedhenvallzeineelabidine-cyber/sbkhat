@@ -96,8 +96,8 @@ window.CONFIG = {
     goal:     0,              // 0 = pas de barre d'objectif
     raised:   0,
     methods: [
-      // { label: "بنكيلي", value: "" },
-      // { label: "مصرفي",  value: "" },
+      // { label: "بنكيلي", value: "48171733" },
+      // { label: "مصرفي",  value: "48171733" },
     ],
     note: ""                  // texte libre affiché sous les moyens de don
   },
