@@ -42,7 +42,7 @@
       bar.className = 'topbar';
       bar.innerHTML =
         '<a href="index.html" style="display:flex;align-items:center;gap:12px">' +
-        '<img src="assets/logo.svg" alt="' + C.org.fullName + '">' +
+        '<img src="logo.svg" alt="' + C.org.fullName + '">' +
         '<span class="name">' + C.org.shortName + '</span></a>';
       document.body.insertBefore(bar, document.body.firstChild);
     }
@@ -66,7 +66,8 @@
     });
   }
   function empty(title, hint) {
-    return '<div class="empty"><h3>' + title + '</h3><p>' + hint + '</p></div>';
+    return '<div class="empty"><h3>' + title + '</h3>' +
+      (hint ? '<p>' + hint + '</p>' : '') + '</div>';
   }
   window.T = { num: num, pct: pct, esc: esc, empty: empty };
 
@@ -143,12 +144,7 @@
     function draw() {
       var list = document.getElementById('list');
       if (!ages.length) {
-        list.innerHTML = empty(
-          'لا توجد أعصار بعد',
-          (C.api && C.api.url)
-            ? 'أضف الأعصار في ورقة <code>الأعصار</code> داخل جدول البيانات: اسم العصر والعدد الإجمالي.'
-            : 'أضف الأعصار في الملف <code>assets/config.js</code> داخل القائمة <code>ages</code>.'
-        );
+        list.innerHTML = empty('لا توجد أعصار بعد');
         return;
       }
       var rows = ages.slice().sort(function (a, b) {
@@ -195,7 +191,7 @@
         var tag = labels[a.status] ? '<span class="tag ' + a.status + '">' + labels[a.status] + '</span>' : '';
         var thumb = a.image
           ? '<div class="thumb"><img src="' + esc(a.image) + '" alt="' + esc(a.title) + '"></div>'
-          : '<div class="thumb"><img class="ph" src="assets/logo.svg" alt=""></div>';
+          : '<div class="thumb"><img class="ph" src="logo.svg" alt=""></div>';
         var open = a.link ? '<a class="activity" href="' + esc(a.link) + '">' : '<div class="activity">';
         var close = a.link ? '</a>' : '</div>';
         return open + thumb + '<div class="body"><h3>' + esc(a.title) + '</h3>' +
@@ -203,10 +199,7 @@
           (a.description ? '<p>' + esc(a.description) + '</p>' : '') +
           tag + '</div>' + close;
       }).join('')
-        : empty('لا توجد أنشطة بعد',
-                (C.api && C.api.url)
-                  ? 'أضف الأنشطة في ورقة <code>الأنشطة</code> داخل جدول البيانات.'
-                  : 'أضف الأنشطة في <code>assets/config.js</code> داخل القائمة <code>activities</code>.'));
+        : empty('لا توجد أنشطة بعد'));
   };
 
   /* ================= الداعمون ================= */
@@ -225,10 +218,7 @@
           '<div class="count">' + (s.amount ? num(s.amount) + ' ' + C.donation.currency : '') + '</div>' +
           '</div>';
       }).join('')
-        : empty('لا يوجد داعمون بعد',
-                (C.api && C.api.url)
-                  ? 'أضف الأسماء في ورقة <code>الداعمون</code> داخل جدول البيانات.'
-                  : 'أضف الأسماء في <code>assets/config.js</code> داخل القائمة <code>supporters</code>.'));
+        : empty('لا يوجد داعمون بعد'));
   };
 
   /* ================= ادعم ================= */
@@ -236,7 +226,7 @@
     var d = C.donation || {};
     if (!d.enabled) {
       mount.innerHTML = '<h1 class="page-title">' + C.nav.donate + '</h1>' +
-        empty('باب الدعم مغلق حالياً', 'يمكن تفعيله من <code>assets/config.js</code>.');
+        empty('باب الدعم مغلق حالياً');
       return;
     }
     var goal = '';
@@ -253,8 +243,7 @@
             '<span class="val">' + esc(m.value) + '</span>' +
             '<button class="copy" data-v="' + esc(m.value) + '">نسخ</button></div>';
         }).join('') + '</div>'
-      : empty('لا توجد وسائل دعم بعد',
-              'أضف وسائل الدفع في <code>assets/config.js</code> داخل <code>donation.methods</code>.');
+      : empty('لا توجد وسائل دعم بعد');
 
     mount.innerHTML =
       '<h1 class="page-title">' + C.nav.donate + '</h1>' +
@@ -276,7 +265,7 @@
     var reg = C.registration || {};
     if (reg.mode === 'closed') {
       mount.innerHTML = '<h1 class="page-title">استمارة الانضمام</h1>' +
-        empty('التسجيل مغلق حالياً', 'يمكن فتحه من <code>assets/config.js</code>.');
+        empty('التسجيل مغلق حالياً');
       return;
     }
     var opts = (C.ages || []).map(function (a) {

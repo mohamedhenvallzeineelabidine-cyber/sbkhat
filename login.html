@@ -29,9 +29,7 @@
     } else {
       document.getElementById('app').innerHTML =
         '<h1 class="page-title">' + (isAdmin ? 'دخول المشرف' : 'تسجيل الدخول') + '</h1>' +
-        T.empty('حسابات الأعضاء غير مفعّلة بعد',
-          'هذا الموقع يعمل حالياً بدون قاعدة بيانات. عند إضافة خدمة الحسابات، ضع رابطها في ' +
-          '<code>config.js</code> داخل <code>auth.loginUrl</code>.') +
+        T.empty('حسابات الأعضاء غير مفعّلة بعد') +
         '<div class="btn-row"><a class="btn btn-primary" href="form.html">استمارة الانضمام</a>' +
         '<a class="btn btn-outline" href="index.html">العودة للرئيسية</a></div>';
     }
