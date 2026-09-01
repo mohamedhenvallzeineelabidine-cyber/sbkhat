@@ -39,7 +39,7 @@ window.CONFIG = {
      Tant qu'elle est vide, le site utilise les listes statiques plus bas.
      -------------------------------------------------------------------- */
   api: {
-    url: "https://script.google.com/macros/s/AKfy.../exec"   // ex : "https://script.google.com/macros/s/AKfy.../exec"
+    url: "https://script.google.com/macros/s/AKfycbxeEMK6Z-XlRInTP8eDqbA6_-wmZzTU9o0l_O4tWdwugVgfPVWZ4PBfv6cCk_YbWbs/exec"   // ex : "https://script.google.com/macros/s/AKfy.../exec"
   },
 
   /* ---------- 5. INSCRIPTION / استمارة الانضمام ------------------------ */
